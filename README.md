@@ -75,9 +75,7 @@ Este arquivo Dockerfile está criando uma imagem Docker para uma aplicação Nod
   - EXPOSE: Informa ao Docker que o container escutará na porta 3000. Isso é importante para que você saiba em qual porta acessar a aplicação quando o container estiver em execução.
 #### CMD ["pnpm", "start"]
   - CMD: Define o comando padrão a ser executado quando o container de produção for iniciado. Aqui, ele executa pnpm start, que provavelmente inicia a aplicação em modo de produção.
-#### Resumo:
-  - Este Dockerfile define um processo de construção dividido em várias etapas para otimizar a construção da imagem para desenvolvimento e produção. As etapas incluem a instalação das dependências, o build da aplicação, e a configuração do ambiente de produção. Ele também define práticas de segurança, como o uso de um usuário não-root para rodar a aplicação, e garante que as dependências e arquivos necessários sejam copiadas entre as etapas de forma eficiente.
-### Arquivo DOCKERCOMPOSE:   
+### Arquivo DOCKER-COMPOSE:   
 #### version: '3.8'
   - O que faz: Especifica a versão do Docker Compose que você está usando. Versões mais altas têm mais recursos, mas a versão 3.8 é bastante comum e estável para a maioria dos projetos.
   - Por que é importante: A versão define quais funcionalidades e opções estarão disponíveis no arquivo docker-compose.yml.
@@ -139,16 +137,5 @@ Este arquivo Dockerfile está criando uma imagem Docker para uma aplicação Nod
 #### volumes:
   - O que faz: Define volumes que podem ser compartilhados entre containers ou usados para persistência de dados.
   - Por que é importante: Volumes são importantes para garantir que dados importantes (como os dados do banco de dados) sejam persistidos entre a reinicialização ou remoção de containers.
-  ##### mysql_data: 
+  ##### mysql_data:/var/lib/mysql
   - Define o volume chamado mysql_data, que será utilizado para armazenar dados persistentes do MySQL.
-#### Resumo:
-##### version: '3.8'
-  - Define a versão do Docker Compose.
-##### services:
-  - Define os containers que o Docker Compose irá criar, incluindo a aplicação e o banco de dados.
-##### app:
-  - Serviço para a aplicação (com o Dockerfile para construir a imagem e configuração de portas).
-##### database:
-  - Serviço para o banco de dados MySQL (usando a imagem oficial do MySQL e configurando variáveis de ambiente e volumes).
-##### volumes:
-  - Define volumes para persistir dados, como os dados do MySQL.
