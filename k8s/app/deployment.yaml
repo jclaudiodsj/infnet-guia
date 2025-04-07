@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: infnet-guia-app
+  namespace: default
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: infnet-guia-app
+  template:
+    metadata:
+      labels:
+        app: infnet-guia-app
+    spec:
+      containers:
+        - name: guia-app
+          image: jclaudiodsj/infnet-guia-app:latest
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: infnet-guia-app-service
+  namespace: default
+spec:
+  type: LoadBalancer
+  selector:
+    app: infnet-guia-app
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
