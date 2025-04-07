@@ -154,3 +154,15 @@ Este arquivo Dockerfile está criando uma imagem Docker para uma aplicação Nod
   - Por que é importante: Volumes são importantes para garantir que dados importantes (como os dados do banco de dados) sejam persistidos entre a reinicialização ou remoção de containers.
   ##### mysql_data:/var/lib/mysql
   - Define o volume chamado mysql_data, que será utilizado para armazenar dados persistentes do MySQL.
+# Kubernetes (k8s):
+## Instalação do Minikube:
+  - Acesse https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download para conferir o procedimento de instalação para seu sistema operacional
+## Iniciar Minikube:
+  - __minikube start –driver=docker__
+## Instalação dos pods e services com arquivo deployment:
+  - __kubectl apply -f [ARQUIVO DEPLOYMENT].yaml__
+  - Exemplo: __kubectl apply -f k8s/app/deployment.yaml__
+## Acessar a aplicação:
+  - Executar no prompt o comando __minikube service infnet-guia-app-service__ ou __minikube service --url infnet-guia-app-service__ para descobrir o endereço para acesso a aplicação.
+## Verificar a quantidade de pods em execução:
+  - __kubectl get pods__
