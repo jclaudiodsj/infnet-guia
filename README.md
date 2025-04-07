@@ -13,6 +13,21 @@
     - Caso seja necessário forçar a reinstalação do container, desconsiderando cache e executando novamente todo procedimento do dockerfile e dockercompose, use o comando __docker compose up --build -d__
 ## Acessando Aplicação:
   - http://localhost:3000/
+## Criando imagem no DockerHub:
+  ### Preparar imagem local: 
+  - __docker build -t [USUARIO DO DOCKER HUB]/infnet-guia-app:latest .__
+  - Exemplo: __docker build -t jclaudiodsj/infnet-guia-app:latest .__
+  ### Fazer upload para repositório do DockerHub: 
+  - __docker push [REPOSITORIO DO DOCKER HUB]:latest__
+  - Exemplo: __docker push jclaudiodsj/infnet-guia-app:latest__
+  - OBS: Se não foi feito login anteriormente, irá precisar através do comando __docker login__
+## Download da imagem do DockerHub:
+  ### Dowload da imagem:
+  - __docker pull [REPOSITORIO DO DOCKER HUB]__
+  - Exemplo: __docker pull jclaudiodsj/infnet-guia-app__
+  ### Iniciar o container com a imagem:
+  - __docker run -d -p 3000:3000 <ID_DA_IMAGEM>__
+  - OBS: Caso não saiba o id da imagem, basta usar o comando __docker images__
 ## Anexos:
 ### Arquivo DOCKERFILE:
 Este arquivo Dockerfile está criando uma imagem Docker para uma aplicação Node.js com pnpm como o gerenciador de pacotes. O arquivo é estruturado em várias etapas (conhecidas como build stages), cada uma com um propósito específico, para otimizar a criação da imagem e fornecer diferentes configurações para desenvolvimento e produção.
