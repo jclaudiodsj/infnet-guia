@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: infnet-guia-app
+  name: deploy-infnet-guia-app
   namespace: default
 spec:
   replicas: 4
@@ -14,7 +14,7 @@ spec:
         app: infnet-guia-app
     spec:
       containers:
-        - name: guia-app
+        - name: container-infnet-guia-app
           image: jclaudiodsj/infnet-guia-app:latest
           ports:
             - containerPort: 3000
@@ -34,7 +34,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: infnet-guia-app-service
+  name: service-infnet-guia-app
   namespace: default
 spec:
   type: LoadBalancer
