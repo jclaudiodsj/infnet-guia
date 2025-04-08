@@ -31,10 +31,10 @@ jobs:
 
       - name: Docker Build
         run: |
-          docker build -t jclaudiodsj/infnet-guia:${{ steps.version.outputs.version_tag }} .
-          docker tag jclaudiodsj/infnet-guia:${{ steps.version.outputs.version_tag }} jclaudiodsj/infnet-guia:latest
+          docker build -t jclaudiodsj/infnet-guia-app:${{ steps.version.outputs.version_tag }} .
+          docker tag jclaudiodsj/infnet-guia-app:${{ steps.version.outputs.version_tag }} jclaudiodsj/infnet-guia-app:latest
 
       - name: Docker Push
         run: |
-          docker push jclaudiodsj/infnet-guia:${{ steps.version.outputs.version_tag }}
-          docker push jclaudiodsj/infnet-guia:latest
+          docker push jclaudiodsj/infnet-guia-app:${{ steps.version.outputs.version_tag }}
+          docker push jclaudiodsj/infnet-guia-app:latest
