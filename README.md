@@ -163,6 +163,6 @@ Este arquivo Dockerfile está criando uma imagem Docker para uma aplicação Nod
   - __kubectl apply -f [ARQUIVO DEPLOYMENT].yaml__
   - Exemplo: __kubectl apply -f k8s/app/deployment.yaml__
 ## Acessar a aplicação:
-  - Executar no prompt o comando __minikube service infnet-guia-app-service__ ou __minikube service --url infnet-guia-app-service__ para descobrir o endereço para acesso a aplicação.
+  - Executar no prompt o comando __minikube service service-infnet-guia-app__ ou __minikube service --url service-infnet-guia-app__ para descobrir o endereço para acesso a aplicação.
 ## Verificar a quantidade de pods em execução:
   - __kubectl get pods__
