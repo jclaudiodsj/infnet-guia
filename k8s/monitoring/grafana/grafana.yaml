@@ -1,9 +1,3 @@
-# Namespace para o Grafana
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: my-grafana
-
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
